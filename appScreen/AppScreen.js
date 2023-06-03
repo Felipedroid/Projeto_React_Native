@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, Text, Button, StyleSheet, View } from 'react-native';
-import Cabecalho from './cabecalho';
-import ItensListados from './novosItens/ItensListados';
-import AdcionarItem from './novosItens/AdcionarItens';
+import { FlatList, Text, StyleSheet, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -35,32 +32,29 @@ function AppScreen({ navigation }) {
   };
 
   const navigateToDetails = () => {
-    navigation.navigate('Details', { total: calcularTotal() });
+    navigation.navigate('Details');
   };
 
   return (
     <View style={styles.container}>
-      <Cabecalho />
       <View style={styles.conteudo}>
-        <AdcionarItem funcao={submeterInformacao} />
-        <Button title="TOTAL" onPress={navigateToDetails} />
+        <Button title="Detalhes" onPress={navigateToDetails} />
         <FlatList
           data={lista}
           renderItem={({ item }) => (
-            <ItensListados props={item} funcao={apertarItem} />
+            <Text>{item.texto}: R$ {item.preco}</Text>
           )}
         />
+        <Text style={styles.total}>Valor Total: R$ {calcularTotal()}</Text>
       </View>
     </View>
   );
 }
 
-function DetailsScreen({ route }) {
-  const { total } = route.params;
-
+function DetailsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.total}>Valor Total: R$ {total}</Text>
+      <Text style={styles.detailsText}>Detalhes da Tela</Text>
     </View>
   );
 }
@@ -69,22 +63,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={AppScreen}
-          options={{
-            headerTitle: 'Minha Lista',
-            headerTitleAlign: 'center',
-          }}
-        />
-        <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-          options={{
-            headerTitle: 'TOTAL',
-            headerTitleAlign: 'center',
-          }}
-        />
+        <Stack.Screen name="Home" component={AppScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

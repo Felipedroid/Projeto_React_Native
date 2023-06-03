@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Cabecalho(props) {
     return (
         <View style={styles.cabecalho}>
-            <Text style={styles.titulo}>Minha Lista </Text>
+            <Text style={styles.titulo}>ITENS E PREÇOS </Text>
         </View>
     );
 }
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#3E54AC'
     },
     titulo: {
+
         textAlign: 'center',
         color: '#fff',
         fontSize: 20,

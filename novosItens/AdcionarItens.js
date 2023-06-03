@@ -1,47 +1,44 @@
-import React, {useState} from "react"
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import React, { useState } from 'react';
+import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function AdcionarItem({funcao}) {
-    const [texto, setTexto] = useState('');
-    const [preco, setPreco] = useState('');
+export default function AdcionarItem({ funcao }) {
+  const [texto, setTexto] = useState('');
+  const [preco, setPreco] = useState('');
 
-    const pegarMudanca = (val) => {
-        funcao(texto, preco);
-        setTexto(val);
-        setPreco(val);
-    }
+  const adicionarItem = () => {
+    funcao(texto, preco);
+    setTexto('');
+    setPreco('');
+  };
 
-    return (
-        <View style={styles.cabecalho}>
-
-            <TextInput
-                style={styles.input}
-                placeholder="Digite o item"
-                value={texto}
-                onChangeText={(valor) => setTexto(valor)}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Digite o preço"
-                value={preco}
-                onChangeText={(valor) => setPreco(valor)}
-            />
-
-            <Button 
-                title="Adicionar" 
-                onPress={pegarMudanca} 
-            />
-
-        </View>
-    )
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite o nome do item"
+        value={texto}
+        onChangeText={(valor) => setTexto(valor)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Digite o preço do item"
+        value={preco}
+        onChangeText={(valor) => setPreco(valor)}
+        keyboardType="numeric"
+      />
+      <Button title="Adicionar" onPress={adicionarItem} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    input: {
-        marginBottom: 10,
-        paddingHorizontal: 8,
-        paddingVertical: 6,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
-    },
+  container: {
+    marginBottom: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    marginBottom: 10,
+  },
 });
