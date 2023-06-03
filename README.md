@@ -4,8 +4,10 @@ Este é um aplicativo simples de lista de compras desenvolvido com React Native.
 
 Funcionalidades
 
-· Adicionar item à lista: digite um item na caixa de texto e clique em "Adicionar". 
-· Adicionar preço do item à lista: digite o preço do item na caixa de texto e clique em "Adicionar". 
+· Adicionar item à lista: digite um item na caixa de texto e clique em "Adicionar";
+
+· Adicionar preço do item à lista: digite o preço do item na caixa de texto e clique em "Adicionar";
+
 · Remover item da lista: clique em um item da lista para removê-lo.
 
 Tecnologias
