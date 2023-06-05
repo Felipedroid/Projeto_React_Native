@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   conteudo: {
+    width:'100%',
     flex: 1,
     padding: 40,
   },
