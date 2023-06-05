@@ -11,6 +11,7 @@ export default function Cabecalho(props) {
 
 const styles = StyleSheet.create({
     cabecalho: {
+        width:'100%',
         height: 80,
         paddingTop: 38,
         backgroundColor: '#3E54AC'
